@@ -38,23 +38,14 @@
     
     .app {
       display: flex;
-      flex-direction: column;
       height: 100vh;
       padding: 10px;
       gap: 10px;
-      overflow: hidden;
-    }
-    
-    /* Responsive layout for larger screens */
-    @media (min-width: 768px) {
-      .app {
-        flex-direction: row;
-      }
     }
     
     /* Sidebar */
     .sidebar {
-      width: 100%;
+      width: max-content;
       background: var(--card);
       border-radius: 12px;
       border: 1px solid var(--border);
@@ -62,32 +53,15 @@
       flex-direction: column;
       transition: var(--transition);
       box-shadow: var(--shadow);
-      max-height: 40vh;
-      overflow: hidden;
-    }
-    
-    @media (min-width: 768px) {
-      .sidebar {
-        width: 320px;
-        max-height: 100%;
-        min-width: 280px;
-        max-width: 400px;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .sidebar {
-        width: 350px;
-      }
     }
     
     .sidebar-header {
-      padding: 15px;
+      padding: 20px;
       border-bottom: 1px solid var(--border);
     }
     
     .sidebar-header h1 {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       margin-bottom: 8px;
       color: var(--accent);
       background: linear-gradient(90deg, var(--accent), #8b5cf6);
@@ -95,33 +69,15 @@
       -webkit-text-fill-color: transparent;
     }
     
-    @media (min-width: 768px) {
-      .sidebar-header h1 {
-        font-size: 1.4rem;
-      }
-    }
-    
     .subtitle {
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       line-height: 1.4;
     }
     
-    @media (min-width: 768px) {
-      .subtitle {
-        font-size: 0.9rem;
-      }
-    }
-    
     .animal-selector {
-      padding: 12px;
+      padding: 15px;
       border-bottom: 1px solid var(--border);
-    }
-    
-    @media (min-width: 768px) {
-      .animal-selector {
-        padding: 15px;
-      }
     }
     
     .animal-tabs {
@@ -130,25 +86,16 @@
       border-radius: 8px;
       padding: 4px;
       margin-bottom: 15px;
-      flex-wrap: wrap;
     }
     
     .animal-tab {
       flex: 1;
-      min-width: 80px;
-      padding: 8px 6px;
+      padding: 8px 12px;
       text-align: center;
       cursor: pointer;
       border-radius: 6px;
       transition: var(--transition);
-      font-size: 0.8rem;
-    }
-    
-    @media (min-width: 768px) {
-      .animal-tab {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-      }
+      font-size: 0.9rem;
     }
     
     .animal-tab:hover {
@@ -162,32 +109,19 @@
     
     .animal-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 8px;
-    }
-    
-    @media (min-width: 768px) {
-      .animal-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
     
     .animal-option {
       background: var(--glass);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 10px;
+      padding: 12px;
       cursor: pointer;
       transition: var(--transition);
       text-align: center;
       position: relative;
-    }
-    
-    @media (min-width: 768px) {
-      .animal-option {
-        padding: 12px;
-      }
     }
     
     .animal-option:hover {
@@ -204,15 +138,9 @@
     }
     
     .animal-icon {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 5px;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-    }
-    
-    @media (min-width: 768px) {
-      .animal-icon {
-        font-size: 1.5rem;
-      }
     }
     
     .animal-option .animal-actions {
@@ -253,32 +181,17 @@
     .parts-list {
       flex: 1;
       overflow-y: auto;
-      padding: 12px;
-    }
-    
-    @media (min-width: 768px) {
-      .parts-list {
-        padding: 15px;
-      }
+      padding: 15px;
     }
     
     .part-item {
       background: var(--glass);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 8px;
       cursor: pointer;
       transition: var(--transition);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    @media (min-width: 768px) {
-      .part-item {
-        padding: 12px;
-      }
     }
     
     .part-item:hover {
@@ -296,25 +209,12 @@
     .part-name {
       font-weight: bold;
       margin-bottom: 4px;
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      .part-name {
-        font-size: 1rem;
-      }
     }
     
     .part-desc {
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       line-height: 1.3;
-    }
-    
-    @media (min-width: 768px) {
-      .part-desc {
-        font-size: 0.85rem;
-      }
     }
     
     /* Main Area */
@@ -328,7 +228,6 @@
       overflow: hidden;
       transition: var(--transition);
       box-shadow: var(--shadow);
-      min-height: 50vh;
     }
     
     .presentation-mode .main-area {
@@ -409,20 +308,11 @@
     .control-bar {
       background: var(--card);
       border-top: 1px solid var(--border);
-      padding: 12px 15px;
+      padding: 15px 20px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
       transition: var(--transition);
-    }
-    
-    @media (min-width: 768px) {
-      .control-bar {
-        padding: 15px 20px;
-        flex-wrap: nowrap;
-      }
     }
     
     .presentation-mode .control-bar {
@@ -440,38 +330,22 @@
     
     .control-group {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    @media (min-width: 768px) {
-      .control-group {
-        gap: 10px;
-        flex-wrap: nowrap;
-      }
     }
     
     .btn {
       background: var(--glass);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 6px 12px;
+      padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-    }
-    
-    @media (min-width: 768px) {
-      .btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-      }
+      font-size: 0.9rem;
     }
     
     .btn:hover {
@@ -528,8 +402,8 @@
     }
     
     .zoom-btn {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -538,13 +412,6 @@
       border-radius: 6px;
       cursor: pointer;
       transition: var(--transition);
-    }
-    
-    @media (min-width: 768px) {
-      .zoom-btn {
-        width: 36px;
-        height: 36px;
-      }
     }
     
     .zoom-btn:hover {
@@ -559,9 +426,8 @@
       background: rgba(30, 41, 59, 0.85);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 15px;
-      max-width: 90%;
-      width: 350px;
+      padding: 20px;
+      max-width: 350px;
       backdrop-filter: blur(10px);
       display: none;
       z-index: 20;
@@ -569,15 +435,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    
-    @media (min-width: 768px) {
-      .info-panel {
-        padding: 20px;
-        max-width: 350px;
-      }
     }
     
     .info-panel.show {
@@ -597,7 +454,7 @@
     }
     
     .info-title {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 10px;
       color: var(--accent);
       background: linear-gradient(90deg, var(--accent), #8b5cf6);
@@ -605,26 +462,14 @@
       -webkit-text-fill-color: transparent;
     }
     
-    @media (min-width: 768px) {
-      .info-title {
-        font-size: 1.2rem;
-      }
-    }
-    
     .info-image {
       width: 100%;
-      max-height: 150px;
+      max-height: 200px;
       object-fit: cover;
       border-radius: 6px;
       margin-bottom: 15px;
       border: 1px solid var(--border);
       transition: var(--transition);
-    }
-    
-    @media (min-width: 768px) {
-      .info-image {
-        max-height: 200px;
-      }
     }
     
     .info-image:hover {
@@ -635,26 +480,13 @@
     .info-description {
       line-height: 1.5;
       margin-bottom: 15px;
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      .info-description {
-        font-size: 1rem;
-      }
     }
     
     .info-meta {
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       border-top: 1px solid var(--border);
       padding-top: 10px;
-    }
-    
-    @media (min-width: 768px) {
-      .info-meta {
-        font-size: 0.85rem;
-      }
     }
     
     /* Search */
@@ -663,17 +495,10 @@
       background: var(--glass);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 8px;
+      padding: 10px;
       color: var(--text);
       margin-bottom: 15px;
       transition: var(--transition);
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      .search-box {
-        padding: 10px;
-      }
     }
     
     .search-box:focus {
@@ -689,43 +514,24 @@
     /* Empty State */
     .empty-state {
       text-align: center;
-      padding: 30px 15px;
+      padding: 40px 20px;
       color: var(--muted);
     }
     
-    @media (min-width: 768px) {
-      .empty-state {
-        padding: 40px 20px;
-      }
-    }
-    
     .empty-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 15px;
       opacity: 0.5;
-    }
-    
-    @media (min-width: 768px) {
-      .empty-icon {
-        font-size: 3rem;
-      }
     }
     
     /* Preparation Controls */
     .prep-controls {
       background: var(--glass);
       border-radius: 8px;
-      padding: 12px;
-      margin: 12px;
+      padding: 15px;
+      margin: 15px;
       border: 1px solid var(--border);
       transition: var(--transition);
-    }
-    
-    @media (min-width: 768px) {
-      .prep-controls {
-        padding: 15px;
-        margin: 15px;
-      }
     }
     
     .prep-controls:hover {
@@ -734,15 +540,9 @@
     }
     
     .prep-title {
-      font-size: 0.9rem;
+      font-size: 1rem;
       margin-bottom: 10px;
       color: var(--accent);
-    }
-    
-    @media (min-width: 768px) {
-      .prep-title {
-        font-size: 1rem;
-      }
     }
     
     .auto-save-status {
@@ -750,14 +550,8 @@
       align-items: center;
       gap: 8px;
       color: var(--success);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       margin-bottom: 10px;
-    }
-    
-    @media (min-width: 768px) {
-      .auto-save-status {
-        font-size: 0.85rem;
-      }
     }
     
     /* Presentation Mode */
@@ -812,7 +606,6 @@
       z-index: 1000;
       display: none;
       animation: fadeIn 0.3s ease;
-      padding: 15px;
     }
     
     @keyframes fadeIn {
@@ -827,20 +620,14 @@
     .modal {
       background: var(--card);
       border-radius: 12px;
-      padding: 15px;
-      width: 100%;
+      padding: 20px;
+      width: 90%;
       max-width: 500px;
       border: 1px solid var(--border);
       max-height: 90vh;
       overflow-y: auto;
       box-shadow: var(--shadow);
       animation: modalSlideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    @media (min-width: 768px) {
-      .modal {
-        padding: 20px;
-      }
     }
     
     @keyframes modalSlideIn {
@@ -855,30 +642,17 @@
     }
     
     .modal-header {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
+      padding-bottom: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
-    @media (min-width: 768px) {
-      .modal-header {
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-      }
-    }
-    
     .modal-title {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--accent);
-    }
-    
-    @media (min-width: 768px) {
-      .modal-title {
-        font-size: 1.2rem;
-      }
     }
     
     .close-modal {
@@ -896,13 +670,7 @@
     }
     
     .form-group {
-      margin-bottom: 12px;
-    }
-    
-    @media (min-width: 768px) {
-      .form-group {
-        margin-bottom: 15px;
-      }
+      margin-bottom: 15px;
     }
     
     .form-label {
@@ -916,16 +684,9 @@
       background: var(--glass);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 8px;
+      padding: 10px;
       color: var(--text);
       transition: var(--transition);
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      .form-input, .form-select {
-        padding: 10px;
-      }
     }
     
     .form-input:focus, .form-select:focus {
@@ -936,43 +697,24 @@
     
     .form-actions {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: flex-end;
-      margin-top: 15px;
-    }
-    
-    @media (min-width: 768px) {
-      .form-actions {
-        gap: 10px;
-        margin-top: 20px;
-      }
+      margin-top: 20px;
     }
     
     .models-list {
       max-height: 300px;
       overflow-y: auto;
-      margin-bottom: 15px;
-    }
-    
-    @media (min-width: 768px) {
-      .models-list {
-        margin-bottom: 20px;
-      }
+      margin-bottom: 20px;
     }
     
     .model-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px;
+      padding: 10px;
       border-bottom: 1px solid var(--border);
       transition: var(--transition);
-    }
-    
-    @media (min-width: 768px) {
-      .model-item {
-        padding: 10px;
-      }
     }
     
     .model-item:hover {
@@ -986,17 +728,11 @@
     .model-info {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     
     .model-icon {
-      font-size: 1.1rem;
-    }
-    
-    @media (min-width: 768px) {
-      .model-icon {
-        font-size: 1.2rem;
-      }
+      font-size: 1.2rem;
     }
     
     .model-actions {
@@ -1008,88 +744,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
-    
-    @media (min-width: 768px) {
-      .tab-header {
-        margin-bottom: 15px;
-      }
-    }
-    
-    .models-grid {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    /* Mobile hamburger menu */
-    .mobile-menu-toggle {
-      display: none;
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: var(--accent);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      border: none;
-      z-index: 100;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow);
-    }
-    
-    @media (max-width: 767px) {
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 90;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      
-      .sidebar.open {
-        transform: translateX(0);
-      }
-      
-      .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 80;
-        display: none;
-      }
-      
-      .sidebar-overlay.open {
-        display: block;
-      }
+
+    models-grid{
+    display: flex;
+    flex-direction: column;
     }
   </style>
 </head>
 <body>
-  <!-- Mobile Menu Toggle -->
-  <button class="mobile-menu-toggle" id="mobileMenuToggle">
-    ☰
-  </button>
-  
-  <!-- Mobile Sidebar Overlay -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-  
   <div class="app">
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar">
       <div class="sidebar-header">
         <h1>Animal Anatomy Tool</h1>
         <div class="subtitle">Interactive Anatomy Explorer - Progress Auto-Saved</div>
@@ -1198,6 +865,8 @@
       </div>
       
       <div class="control-bar">
+      
+        
         <div class="control-group">
           <div class="zoom-controls">
             <button class="zoom-btn" id="zoomOut">−</button>
@@ -1266,1036 +935,1022 @@
   <!-- Hidden file input for import -->
   <input type="file" id="importFile" accept=".json" style="display: none">
 
-  <script>
-    // Initialize application
-    function init() {
-      loadSavedPreparation();
-      setupEventListeners();
-      renderAllAnimals();
-      updateDisplay();
+<script>
+/* ============================
+   Animal Anatomy - Revised
+   ============================ */
 
-      // ✅ إصلاح: تحديث أماكن النقاط بعد أول تحميل
-      updateAllHotspotPositions();
+(function () {
+  // -------------------------
+  // State
+  // -------------------------
+  const anatomyData = {}; // ضع هنا بيانات الحيوانات الافتراضية إن وُجدت
+  let currentAnimal = 'camel';
+  let currentScale = 1;
+  let activePart = null;
+  let isAddingHotspot = false;
+  let isDraggingHotspot = false;
+  let isMovingMode = false;
+  let dragPointerId = null;
+  let currentHotspotEl = null;
+  let editingModelId = null;
+  let isPresentationMode = false;
+  let isDirty = false; // true إذا تغيّر شيء ولم يُحفظ بعد
 
-      // ✅ إصلاح: لما الصورة تخلص تحميل
-      anatomyImage.addEventListener('load', updateAllHotspotPositions);
+  let preparationData = {
+    animal: currentAnimal,
+    hotspots: [],
+    lastSaved: null,
+    customModels: {}
+  };
+
+  // -------------------------
+  // DOM references
+  // -------------------------
+  const viewer = document.getElementById('viewer');
+  const anatomyImage = document.getElementById('anatomyImage');
+  const partsContainer = document.getElementById('parts-container');
+  const infoPanel = document.getElementById('infoPanel');
+  const infoTitle = document.getElementById('infoTitle');
+  const infoImage = document.getElementById('infoImage');
+  const infoVideo = document.getElementById('infoVideo');
+  const infoIframe = document.getElementById('infoIframe');
+  const infoDescription = document.getElementById('infoDescription');
+  const infoMeta = document.getElementById('infoMeta');
+  const importFile = document.getElementById('importFile');
+  const app = document.querySelector('.app');
+  const modelModal = document.getElementById('modelModal');
+  const addModelBtn = document.getElementById('addModelBtn');
+  const control_bar = document.querySelector('.control-bar');
+
+  // -------------------------
+  // Helpers (media detection etc.)
+  // -------------------------
+  function isDirectVideoUrl(url) {
+    if (!url) return false;
+    return /\.(mp4|webm|ogg)(\?|$)/i.test(String(url).toLowerCase());
+  }
+  function isEmbedProvider(url) {
+    if (!url) return false;
+    const u = String(url).toLowerCase();
+    return /youtube\.com|youtu\.be|vimeo\.com/.test(u);
+  }
+  function getEmbedUrl(url) {
+    if (!url) return '';
+    const u = String(url);
+    const ytMatch = u.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+    if (ytMatch && ytMatch[1]) return 'https://www.youtube.com/embed/' + ytMatch[1] + '?rel=0';
+    const vimeoMatch = u.match(/vimeo\.com\/(?:channels\/[\w\/]+\/)?(\d+)/);
+    if (vimeoMatch && vimeoMatch[1]) return 'https://player.vimeo.com/video/' + vimeoMatch[1];
+    return '';
+  }
+
+  // -------------------------
+  // Persistence
+  // -------------------------
+  function loadSavedPreparation() {
+    const saved = localStorage.getItem('animalAnatomyPreparation');
+    if (!saved) {
+      loadDefaultAnimal();
+      return;
     }
-
-    // Anatomy data for different animals
-    const anatomyData = {};
-
-    // Application state
-    let currentAnimal = 'camel';
-    let currentScale = 1;
-    let activePart = null;
-    let isAddingHotspot = false;
-    let isDraggingHotspot = false;
-    let isMovingMode = false;
-    let dragStartPos = null;
-    let currentHotspot = null;
-    let isPresentationMode = false;
-    let editingModelId = null;
-
-    // Current preparation data
-    let preparationData = {
-      animal: currentAnimal,
-      hotspots: [],
-      lastSaved: null,
-      customModels: {} // Store custom models
-    };
-
-    // DOM elements
-    const viewer = document.getElementById('viewer');
-    const anatomyImage = document.getElementById('anatomyImage');
-    const partsContainer = document.getElementById('parts-container');
-    const infoPanel = document.getElementById('infoPanel');
-    const infoTitle = document.getElementById('infoTitle');
-    const infoImage = document.getElementById('infoImage');
-    const infoVideo = document.getElementById('infoVideo');
-    const infoIframe = document.getElementById('infoIframe');
-    const infoDescription = document.getElementById('infoDescription');
-    const infoMeta = document.getElementById('infoMeta');
-    const importFile = document.getElementById('importFile');
-    const app = document.querySelector('.app');
-    const modelModal = document.getElementById('modelModal');
-    const addModelBtn = document.getElementById('addModelBtn');
-    const control_bar = document.querySelector('.control-bar');
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-    // Helpers to detect direct video files vs embed providers (YouTube/Vimeo)
-    function isDirectVideoUrl(url) {
-      if (!url) return false;
-      return /\.(mp4|webm|ogg)(\?|$)/i.test(url.toString().toLowerCase());
-    }
-
-    function isEmbedProvider(url) {
-      if (!url) return false;
-      const u = url.toString().toLowerCase();
-      return /youtube\.com|youtu\.be|vimeo\.com/.test(u);
-    }
-
-    function getEmbedUrl(url) {
-      if (!url) return '';
-      const u = url.toString();
-      // YouTube watch URL -> embed
-      const ytMatch = u.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
-      if (ytMatch && ytMatch[1]) {
-        return 'https://www.youtube.com/embed/' + ytMatch[1] + '?rel=0';
-      }
-      // Vimeo id extraction
-      const vimeoMatch = u.match(/vimeo\.com\/(?:channels\/[\w\/]+\/)?(\d+)/);
-      if (vimeoMatch && vimeoMatch[1]) {
-        return 'https://player.vimeo.com/video/' + vimeoMatch[1];
-      }
-      return '';
-    }
-
-    // Load saved preparation
-    function loadSavedPreparation() {
-      const saved = localStorage.getItem('animalAnatomyPreparation');
-      if (saved) {
-        try {
-          const parsedData = JSON.parse(saved);
-          preparationData = {...preparationData, ...parsedData};
-          
-          // Ensure customModels property exists
-          if (!preparationData.customModels) {
-            preparationData.customModels = {};
-          }
-          
-          currentAnimal = preparationData.animal;
-          updateAnimalSelection();
-          createHotspotsFromData();
-          showNotification('Previous preparation loaded automatically', 'success');
-        } catch (e) {
-          console.error('Error loading saved preparation:', e);
-          loadDefaultAnimal();
-        }
-      } else {
-        loadDefaultAnimal();
-      }
-    }
-
-    // Load default animal
-    function loadDefaultAnimal() {
-      const data = anatomyData[currentAnimal];
-      if (data) {
-        preparationData.hotspots = [...data.parts];
-        savePreparation();
-        createHotspotsFromData();
-      }
-    }
-
-    // Save preparation
-    function savePreparation() {
-      preparationData.lastSaved = new Date().toISOString();
-      preparationData.animal = currentAnimal;
-      localStorage.setItem('animalAnatomyPreparation', JSON.stringify(preparationData));
-    }
-
-    // Update display
-    function updateDisplay() {
-      renderPartsList();
+    try {
+      const parsed = JSON.parse(saved);
+      // Merge but keep defaults
+      preparationData = { ...preparationData, ...parsed };
+      if (!preparationData.customModels) preparationData.customModels = {};
+      currentAnimal = preparationData.animal || currentAnimal;
+      updateAnimalSelection();
+      // create hotspots after we ensure image will be loaded
       createHotspotsFromData();
+      isDirty = false;
+      showNotification('Previous preparation loaded automatically', 'success');
+    } catch (err) {
+      console.error('Failed to parse saved preparation', err);
+      loadDefaultAnimal();
     }
+  }
 
-    // Render parts list
-    function renderPartsList() {
-      partsContainer.innerHTML = '';
-      
-      if (preparationData.hotspots.length === 0) {
-        partsContainer.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-icon">🔍</div>
-            <div>No parts available</div>
-            <div style="font-size: 0.8rem; margin-top: 10px;">Use "Add Hotspot" button to start preparation</div>
-          </div>
-        `;
-        return;
-      }
-
-      preparationData.hotspots.forEach(part => {
-        const partElement = document.createElement('div');
-        partElement.className = `part-item ${activePart?.id === part.id ? 'active' : ''}`;
-        partElement.innerHTML = `
-          <div>
-            <div class="part-name">${part.name}</div>
-            <div class="part-desc">${part.description.substring(0, 60)}...</div>
-          </div>
-          <div style="font-size: 0.8rem; color: var(--muted);">
-            ${part.x}%, ${part.y}%
-          </div>
-        `;
-        partElement.addEventListener('click', () => showPartInfo(part));
-        partsContainer.appendChild(partElement);
-      });
-    }
-
-    // Create hotspots from data
-    function createHotspotsFromData() {
-      // Remove old hotspots
-      document.querySelectorAll('.hotspot').forEach(hotspot => hotspot.remove());
-      
-      preparationData.hotspots.forEach((part, index) => {
-        createHotspotElement(part, index);
-      });
-    }
-
-    // Create interactive hotspot element
-    function createHotspotElement(part, index) {
-      const hotspot = document.createElement('div');
-      hotspot.className = `hotspot ${activePart?.id === part.id ? 'active' : ''}`;
-      
-      // Calculate position based on current scale
-      updateHotspotPosition(hotspot, part);
-      
-      hotspot.textContent = (index + 1).toString();
-      hotspot.title = part.name;
-      hotspot.dataset.partId = part.id;
-      
-      // Add drag capability
-      hotspot.addEventListener('mousedown', startDragging);
-      hotspot.addEventListener('touchstart', startDragging);
-      
-      hotspot.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showPartInfo(part);
-      });
-      
-      viewer.appendChild(hotspot);
-    }
-
-    // Update hotspot position based on current scale - Fixed to not be affected by zoom
-    function updateHotspotPosition(hotspot, part) {
-      const rect = viewer.getBoundingClientRect();
-      const imageRect = anatomyImage.getBoundingClientRect();
-      
-      // Calculate the scaled position - fixed to not be affected by zoom
-      const scaledX = (part.x / 100) * imageRect.width;
-      const scaledY = (part.y / 100) * imageRect.height;
-      
-      // Calculate the offset from the image to the viewer
-      const offsetX = (rect.width - imageRect.width) / 2;
-      const offsetY = (rect.height - imageRect.height) / 2;
-      
-      // Calculate final position
-      const finalX = offsetX + scaledX;
-      const finalY = offsetY + scaledY;
-      
-      // Set position in pixels instead of percentages
-      hotspot.style.left = `${finalX}px`;
-      hotspot.style.top = `${finalY}px`;
-      
-      // Apply inverse scale to counteract the image zoom
-      hotspot.style.transform = `scale(${1/currentScale})`;
-    }
-
-    // Update all hotspot positions when zoom changes
-    function updateAllHotspotPositions() {
-      document.querySelectorAll('.hotspot').forEach(hotspot => {
-        const partId = hotspot.dataset.partId;
-        const part = preparationData.hotspots.find(p => p.id === partId);
-        if (part) {
-          updateHotspotPosition(hotspot, part);
-        }
-      });
-    }
-
-    // Start dragging hotspot
-    function startDragging(e) {
-      if (!isMovingMode && !isDraggingHotspot) return;
-      
-      e.preventDefault();
-      e.stopPropagation();
-      
-      isDraggingHotspot = true;
-      currentHotspot = e.target;
-      currentHotspot.classList.add('dragging');
-      
-      const partId = currentHotspot.dataset.partId;
-      activePart = preparationData.hotspots.find(p => p.id === partId);
-      
-      document.addEventListener('mousemove', dragHotspot);
-      document.addEventListener('touchmove', dragHotspot);
-      document.addEventListener('mouseup', stopDragging);
-      document.addEventListener('touchend', stopDragging);
-    }
-
-    // Drag hotspot
-    function dragHotspot(e) {
-      if (!isDraggingHotspot || !currentHotspot) return;
-      
-      e.preventDefault();
-      const rect = viewer.getBoundingClientRect();
-      const imageRect = anatomyImage.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      
-      // Calculate the offset from the image to the viewer
-      const offsetX = (rect.width - imageRect.width) / 2;
-      const offsetY = (rect.height - imageRect.height) / 2;
-      
-      // Calculate position relative to the image
-      const x = Math.max(0, Math.min(100, ((clientX - rect.left - offsetX) / imageRect.width) * 100));
-      const y = Math.max(0, Math.min(100, ((clientY - rect.top - offsetY) / imageRect.height) * 100));
-      
-      // Update hotspot position
-      updateHotspotPosition(currentHotspot, {x, y});
-      
-      // Update data
-      if (activePart) {
-        activePart.x = x;
-        activePart.y = y;
-        updateInfoPanel();
-      }
-    }
-
-    // Stop dragging
-    function stopDragging() {
-      isDraggingHotspot = false;
-      if (currentHotspot) {
-        currentHotspot.classList.remove('dragging');
-        currentHotspot = null;
-      }
-      
-      // Save changes
+  function loadDefaultAnimal() {
+    const data = anatomyData[currentAnimal];
+    if (data && Array.isArray(data.parts)) {
+      preparationData.hotspots = data.parts.map(p => ({ ...p }));
       savePreparation();
-      renderPartsList();
-      
-      document.removeEventListener('mousemove', dragHotspot);
-      document.removeEventListener('touchmove', dragHotspot);
-      document.removeEventListener('mouseup', stopDragging);
-      document.removeEventListener('touchend', stopDragging);
+    } else {
+      preparationData.hotspots = [];
     }
+    createHotspotsFromData();
+  }
 
-    // Show part information
-    function showPartInfo(part) {
-      activePart = part;
-      updateInfoPanel();
-      infoPanel.classList.add('show');
-      
-      renderPartsList();
-      updateHotspotActiveStates();
-      
-      // Close mobile sidebar when showing part info on mobile
-      if (window.innerWidth < 768) {
-        closeMobileSidebar();
-      }
+  function savePreparation() {
+    preparationData.lastSaved = new Date().toISOString();
+    preparationData.animal = currentAnimal;
+    try {
+      localStorage.setItem('animalAnatomyPreparation', JSON.stringify(preparationData));
+      isDirty = false;
+      showNotification('Preparation saved', 'success');
+    } catch (err) {
+      console.error('Save failed', err);
+      showNotification('Failed to save', 'error');
     }
+  }
 
-    // Update info panel
-    function updateInfoPanel() {
-      if (!activePart) return;
-      
-      infoTitle.textContent = activePart.name;
-      infoDescription.textContent = activePart.description;
-      // infoMeta.textContent = `System: ${activePart.system} • Layer: ${activePart.layer} • Coordinates: ${activePart.x.toFixed(1)}%, ${activePart.y.toFixed(1)}%`;
-      
-      // Handle part media: direct video file, embed provider (YouTube/Vimeo), or image
-      if (activePart.image) {
-        const url = activePart.image;
-        // If it's a direct video file (mp4/webm/ogg)
-        if (isDirectVideoUrl(url)) {
-          infoVideo.src = url;
-          infoVideo.style.display = 'block';
-          infoVideo.pause();
-          // show video, hide image and iframe
+  // -------------------------
+  // Rendering parts list & hotspots
+  // -------------------------
+  function updateDisplay() {
+    renderPartsList();
+    // createHotspotsFromData(); // kept separate; createHotspotsFromData already handles DOM
+    updateAllHotspotPositions();
+  }
+
+  function renderPartsList() {
+    partsContainer.innerHTML = '';
+    if (!preparationData.hotspots || preparationData.hotspots.length === 0) {
+      partsContainer.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <div>No parts available</div>
+          <div style="font-size: 0.8rem; margin-top: 10px;">Use "Add Hotspot" button to start preparation</div>
+        </div>`;
+      return;
+    }
+    preparationData.hotspots.forEach((part, idx) => {
+      const el = document.createElement('div');
+      el.className = `part-item ${activePart?.id === part.id ? 'active' : ''}`;
+      el.style.display = 'flex';
+      el.style.justifyContent = 'space-between';
+      el.style.alignItems = 'center';
+      el.innerHTML = `
+        <div>
+          <div class="part-name">${escapeHtml(part.name)}</div>
+          <div class="part-desc">${escapeHtml((part.description || '').substring(0, 60))}...</div>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--muted);">
+          ${Number(part.x).toFixed(1)}%, ${Number(part.y).toFixed(1)}%
+        </div>
+      `;
+      el.addEventListener('click', () => showPartInfo(part));
+      partsContainer.appendChild(el);
+    });
+  }
+
+  function createHotspotsFromData() {
+    // Remove existing
+    document.querySelectorAll('.hotspot').forEach(n => n.remove());
+    if (!preparationData.hotspots) preparationData.hotspots = [];
+    preparationData.hotspots.forEach((part, idx) => {
+      createHotspotElement(part, idx);
+    });
+    // ensure positions after DOM inserted
+    updateAllHotspotPositions();
+  }
+
+  function createHotspotElement(part, index) {
+    const hotspot = document.createElement('div');
+    hotspot.className = `hotspot ${activePart?.id === part.id ? 'active' : ''}`;
+    hotspot.dataset.partId = part.id;
+    hotspot.innerText = (index + 1).toString();
+    hotspot.title = part.name || '';
+    hotspot.style.position = 'absolute';
+    hotspot.style.left = '0px';
+    hotspot.style.top = '0px';
+    hotspot.style.transform = `translate(-50%,-50%) scale(${1 / currentScale})`;
+    hotspot.style.transformOrigin = 'center center';
+    hotspot.style.cursor = 'pointer';
+    hotspot.setAttribute('role', 'button');
+
+    // pointer events for unified input
+    hotspot.addEventListener('pointerdown', startDragging);
+    hotspot.addEventListener('click', (e) => { e.stopPropagation(); showPartInfo(part); });
+
+    viewer.appendChild(hotspot);
+
+    // Position it after image ready
+    if (anatomyImage.complete && anatomyImage.naturalWidth !== 0) {
+      // use RAF to ensure layout stable
+      requestAnimationFrame(() => updateHotspotPosition(hotspot, part));
+    } else {
+      anatomyImage.addEventListener('load', function onLoad() {
+        anatomyImage.removeEventListener('load', onLoad);
+        requestAnimationFrame(() => updateHotspotPosition(hotspot, part));
+      });
+    }
+  }
+
+  // -------------------------
+  // Positioning logic (accurate)
+  // -------------------------
+  function updateHotspotPosition(hotspotEl, part) {
+    if (!hotspotEl || !part) return;
+    const viewerRect = viewer.getBoundingClientRect();
+    const imageRect = anatomyImage.getBoundingClientRect();
+
+    // If image has zero dimensions, skip
+    if (imageRect.width === 0 || imageRect.height === 0) return;
+
+    // Calculate pixel position relative to image top-left
+    const px = (Number(part.x) / 100) * imageRect.width;
+    const py = (Number(part.y) / 100) * imageRect.height;
+
+    // offset from viewer left/top to image left/top (precise)
+    const offsetLeft = imageRect.left - viewerRect.left;
+    const offsetTop = imageRect.top - viewerRect.top;
+
+    const finalX = offsetLeft + px;
+    const finalY = offsetTop + py;
+
+    hotspotEl.style.left = `${finalX}px`;
+    hotspotEl.style.top = `${finalY}px`;
+    // keep hotspot size stable regardless of zoom
+    hotspotEl.style.transform = `translate(-50%,-50%) scale(${1 / currentScale})`;
+  }
+
+  function updateAllHotspotPositions() {
+    // ensure stable layout
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.hotspot').forEach(h => {
+        const partId = h.dataset.partId;
+        const part = preparationData.hotspots.find(p => p.id === partId);
+        if (part) updateHotspotPosition(h, part);
+      });
+    });
+  }
+
+  // -------------------------
+  // Drag / Move handlers (pointer events)
+  // -------------------------
+  function startDragging(e) {
+    // Only start drag if moving mode enabled (or if explicitly allowed)
+    if (!isMovingMode) return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    el.setPointerCapture(e.pointerId);
+    dragPointerId = e.pointerId;
+    isDraggingHotspot = true;
+    currentHotspotEl = el;
+    currentHotspotEl.classList.add('dragging');
+    const partId = el.dataset.partId;
+    activePart = preparationData.hotspots.find(p => p.id === partId) || null;
+
+    // listen to move & up on the element
+    el.addEventListener('pointermove', dragHotspot);
+    el.addEventListener('pointerup', stopDragging);
+    el.addEventListener('pointercancel', stopDragging);
+  }
+
+  function dragHotspot(e) {
+    if (!isDraggingHotspot || !currentHotspotEl) return;
+    // ensure same pointer
+    if (e.pointerId !== dragPointerId) return;
+    e.preventDefault();
+
+    const imageRect = anatomyImage.getBoundingClientRect();
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    // compute percentage relative to image top-left
+    const x = Math.max(0, Math.min(100, ((clientX - imageRect.left) / imageRect.width) * 100));
+    const y = Math.max(0, Math.min(100, ((clientY - imageRect.top) / imageRect.height) * 100));
+
+    // update element position immediately (visual feedback)
+    updateHotspotPosition(currentHotspotEl, { x, y });
+
+    // update data model
+    if (activePart) {
+      activePart.x = x;
+      activePart.y = y;
+      updateInfoPanel(); // update coordinates shown
+      isDirty = true;
+    }
+  }
+
+  function stopDragging(e) {
+    if (!currentHotspotEl) return;
+    // release pointer capture
+    try { currentHotspotEl.releasePointerCapture(dragPointerId); } catch (err) { /* ignore */ }
+    currentHotspotEl.classList.remove('dragging');
+
+    // remove listeners
+    currentHotspotEl.removeEventListener('pointermove', dragHotspot);
+    currentHotspotEl.removeEventListener('pointerup', stopDragging);
+    currentHotspotEl.removeEventListener('pointercancel', stopDragging);
+
+    // finalize
+    isDraggingHotspot = false;
+    dragPointerId = null;
+    currentHotspotEl = null;
+
+    // persist change (save only if dirty)
+    if (isDirty) {
+      savePreparation();
+      updateDisplay();
+    }
+  }
+
+  // -------------------------
+  // Info panel
+  // -------------------------
+  function showPartInfo(part) {
+    activePart = part;
+    updateInfoPanel();
+    infoPanel.classList.add('show');
+    renderPartsList();
+    updateHotspotActiveStates();
+  }
+
+  function updateInfoPanel() {
+    if (!activePart) return;
+    infoTitle.textContent = activePart.name || '';
+    infoDescription.textContent = activePart.description || '';
+    if (activePart.image) {
+      const url = activePart.image;
+      if (isDirectVideoUrl(url)) {
+        infoVideo.src = url;
+        infoVideo.style.display = 'block';
+        infoVideo.pause();
+        infoImage.style.display = 'none';
+        infoIframe.style.display = 'none';
+      } else if (isEmbedProvider(url)) {
+        const embedded = getEmbedUrl(url);
+        if (embedded) {
+          infoIframe.src = embedded;
+          infoIframe.style.display = 'block';
           infoImage.style.display = 'none';
-          infoIframe.style.display = 'none';
-        }
-        // If it's a provider like YouTube/Vimeo -> use iframe embed
-        else if (isEmbedProvider(url)) {
-          const embed = getEmbedUrl(url);
-          if (embed) {
-            infoIframe.src = embed;
-            infoIframe.style.display = 'block';
-            // hide image and native video
-            infoImage.style.display = 'none';
-            infoVideo.pause();
-            infoVideo.src = '';
-            infoVideo.style.display = 'none';
-          } else {
-            // fallback to showing as image if embed not resolved
-            infoImage.src = url;
-            infoImage.style.display = 'block';
-            infoVideo.pause();
-            infoVideo.src = '';
-            infoVideo.style.display = 'none';
-            infoIframe.style.display = 'none';
-          }
-        }
-        // Otherwise treat as image
-        else {
+          infoVideo.pause(); infoVideo.src = ''; infoVideo.style.display = 'none';
+        } else {
           infoImage.src = url;
           infoImage.style.display = 'block';
-          infoVideo.pause();
-          infoVideo.src = '';
-          infoVideo.style.display = 'none';
           infoIframe.style.display = 'none';
+          infoVideo.pause(); infoVideo.src = ''; infoVideo.style.display = 'none';
         }
       } else {
-        infoImage.style.display = 'none';
-        infoVideo.pause();
-        infoVideo.src = '';
-        infoVideo.style.display = 'none';
+        infoImage.src = url;
+        infoImage.style.display = 'block';
+        infoVideo.pause(); infoVideo.src = ''; infoVideo.style.display = 'none';
         infoIframe.style.display = 'none';
       }
+    } else {
+      infoImage.style.display = 'none';
+      infoVideo.pause(); infoVideo.src = ''; infoVideo.style.display = 'none';
+      infoIframe.style.display = 'none';
     }
+    // optional meta
+    infoMeta.textContent = `Coordinates: ${Number(activePart.x).toFixed(1)}%, ${Number(activePart.y).toFixed(1)}%`;
+  }
 
-    // Update active hotspot states
-    function updateHotspotActiveStates() {
-      document.querySelectorAll('.hotspot').forEach(hotspot => {
-        hotspot.classList.toggle('active', hotspot.dataset.partId === activePart?.id);
+  function updateHotspotActiveStates() {
+    document.querySelectorAll('.hotspot').forEach(h => {
+      h.classList.toggle('active', h.dataset.partId === activePart?.id);
+    });
+  }
+
+  // -------------------------
+  // Edit / Delete part
+  // -------------------------
+  function editPart() {
+    if (!activePart) return;
+    const newName = prompt('Anatomical part name:', activePart.name);
+    if (newName === null) return;
+    const newDescription = prompt('Part description:', activePart.description || '') || '';
+    const newSystem = prompt('System:', activePart.system || '') || '';
+    const newLayer = prompt('Layer:', activePart.layer || '') || '';
+    const newImage = prompt('Part image or video URL (optional):', activePart.image || '');
+
+    activePart.name = newName;
+    activePart.description = newDescription;
+    activePart.system = newSystem;
+    activePart.layer = newLayer;
+    activePart.image = newImage || null;
+
+    isDirty = true;
+    savePreparation();
+    updateDisplay();
+    updateInfoPanel();
+    showNotification('Hotspot edited successfully', 'success');
+  }
+
+  function deletePart() {
+    if (!activePart) return;
+    if (!confirm(`Are you sure you want to delete hotspot "${activePart.name}"?`)) return;
+    preparationData.hotspots = preparationData.hotspots.filter(p => p.id !== activePart.id);
+    activePart = null;
+    isDirty = true;
+    savePreparation();
+    updateDisplay();
+    infoPanel.classList.remove('show');
+    showNotification('Hotspot deleted successfully', 'success');
+  }
+
+  // -------------------------
+  // Add hotspot (click on viewer)
+  // -------------------------
+  function addHotspotAtPosition(clientX, clientY) {
+    const imageRect = anatomyImage.getBoundingClientRect();
+    if (imageRect.width === 0 || imageRect.height === 0) {
+      showNotification('Image not ready', 'error');
+      return;
+    }
+    const x = Math.max(0, Math.min(100, ((clientX - imageRect.left) / imageRect.width) * 100));
+    const y = Math.max(0, Math.min(100, ((clientY - imageRect.top) / imageRect.height) * 100));
+
+    const name = prompt('Anatomical part name:');
+    if (!name) return;
+    const description = prompt('Part description:') || '';
+    const system = prompt('System (e.g., Skeletal, Digestive):') || '';
+    const layer = prompt('Layer (e.g., Bones, Muscles):') || '';
+    const imageUrl = prompt('Part image or video URL (optional):', '') || null;
+
+    const newPart = {
+      id: 'part_' + Date.now(),
+      name,
+      description,
+      system,
+      layer,
+      x,
+      y,
+      image: imageUrl
+    };
+
+    preparationData.hotspots.push(newPart);
+    isDirty = true;
+    savePreparation();
+    createHotspotsFromData();
+    showNotification('Hotspot added successfully', 'success');
+  }
+
+  // -------------------------
+  // Toggle move mode & presentation mode
+  // -------------------------
+  function toggleMoveMode() {
+    isMovingMode = !isMovingMode;
+    const moveBtn = document.getElementById('movePart');
+    if (!moveBtn) return;
+    if (isMovingMode) {
+      moveBtn.innerHTML = '<span>✅</span> Finish Moving';
+      moveBtn.classList.add('btn-success');
+      showNotification('Move mode enabled - Drag hotspots to change positions', 'info');
+    } else {
+      moveBtn.innerHTML = '<span>↔️</span> Move Hotspot';
+      moveBtn.classList.remove('btn-success');
+      showNotification('Move mode disabled', 'info');
+    }
+  }
+
+function togglePresentationMode() {
+    isPresentationMode = !isPresentationMode;
+
+    const presentationBtn = document.getElementById("presentationMode");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (isPresentationMode) {
+        app.classList.add("presentation-mode");
+
+        if (presentationBtn) {
+            presentationBtn.innerHTML = '<span>👁️</span> Exit Presentation';
+            presentationBtn.classList.add("btn-danger");
+        }
+
+        if (control_bar) control_bar.style.display = "none";
+
+        // ❗ بدل remove → hide
+        if (sidebar) sidebar.style.display = "none";
+
+        showNotification("تم تفعيل وضع العرض", "success");
+        updateDisplay();
+
+
+    } else {
+        app.classList.remove("presentation-mode");
+
+        if (presentationBtn) {
+            presentationBtn.innerHTML = '<span>🎯</span> Presentation Mode';
+            presentationBtn.classList.remove("btn-danger");
+        }
+
+        if (control_bar) control_bar.style.display = "";
+
+        // ❗ إرجاع الـ sidebar
+        if (sidebar) sidebar.style.display = "";
+
+        showNotification("تم الخروج من وضع العرض", "info");
+        updateDisplay();
+
+    }
+}
+
+
+  // -------------------------
+  // Export / Import
+  // -------------------------
+  function exportPreparation() {
+    const dataStr = JSON.stringify(preparationData, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${currentAnimal}_anatomy_preparation_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    showNotification('Preparation exported successfully', 'success');
+  }
+
+  function handleFileImport(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (evt) {
+      try {
+        const imported = JSON.parse(evt.target.result);
+        preparationData = { ...preparationData, ...imported };
+        currentAnimal = preparationData.animal || currentAnimal;
+        savePreparation();
+        updateAnimalSelection();
+        createHotspotsFromData();
+        renderAllAnimals();
+        showNotification('Preparation imported successfully', 'success');
+      } catch (err) {
+        console.error('Import error', err);
+        showNotification('Error importing file', 'error');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  // -------------------------
+  // Animals / Models rendering
+  // -------------------------
+  function renderAllAnimals() {
+    const allGrid = document.getElementById('all-grid');
+    if (!allGrid) return;
+    allGrid.innerHTML = '';
+    Object.keys(anatomyData).forEach(anId => {
+      createAnimalOption(allGrid, anId, anatomyData[anId]);
+    });
+    if (preparationData.customModels) {
+      Object.keys(preparationData.customModels).forEach(mid => {
+        createAnimalOption(allGrid, mid, preparationData.customModels[mid]);
       });
     }
+  }
 
-    // Edit part
-    function editPart() {
-      if (!activePart) return;
-      
-      const newName = prompt('Anatomical part name:', activePart.name);
-      if (newName === null) return;
-      
-      const newDescription = prompt('Part description:', activePart.description) || '';
-      const newSystem = prompt('System:', activePart.system) || '';
-      const newLayer = prompt('Layer:', activePart.layer) || '';
-      
-      // Ask for image or video URL
-      const newImage = prompt('Part image or video URL (optional):', activePart.image || '');
-      
-      activePart.name = newName;
-      activePart.description = newDescription;
-      activePart.system = newSystem;
-      activePart.layer = newLayer;
-      if (newImage !== null) {
-        activePart.image = newImage || null;
+  function renderAnimalsByCategory(category) {
+    const grid = document.getElementById(`${category}-grid`);
+    if (!grid) return;
+    grid.innerHTML = '';
+    Object.keys(anatomyData).forEach(anId => {
+      const a = anatomyData[anId];
+      if (a.type === category) createAnimalOption(grid, anId, a);
+    });
+    if (preparationData.customModels) {
+      Object.keys(preparationData.customModels).forEach(mid => {
+        const m = preparationData.customModels[mid];
+        if (m.type === category) createAnimalOption(grid, mid, m);
+      });
+    }
+  }
+
+  function createAnimalOption(container, animalId, animal) {
+    const div = document.createElement('div');
+    div.className = `animal-option ${currentAnimal === animalId ? 'active' : ''}`;
+    div.dataset.animal = animalId;
+    div.innerHTML = `
+      <div class="animal-actions">
+        ${animalId.startsWith('custom_') ? `
+          <button class="edit" data-animal="${animalId}">✏️</button>
+          <button class="delete" data-animal="${animalId}">🗑️</button>
+        ` : ''}
+      </div>
+      <div class="animal-icon">${animal.icon || '🐾'}</div>
+      <div>${escapeHtml(animal.name || animalId)}</div>
+    `;
+    if (animalId.startsWith('custom_')) {
+      const editBtn = div.querySelector('.edit');
+      const delBtn = div.querySelector('.delete');
+      editBtn.addEventListener('click', (ev) => { ev.stopPropagation(); editModel(animalId); });
+      delBtn.addEventListener('click', (ev) => { ev.stopPropagation(); deleteModel(animalId); });
+    }
+    container.appendChild(div);
+  }
+
+  function renderModelsList() {
+    const modelsContainer = document.getElementById('models-container');
+    if (!modelsContainer) return;
+    modelsContainer.innerHTML = '';
+    if (!preparationData.customModels || Object.keys(preparationData.customModels).length === 0) {
+      modelsContainer.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📁</div>
+          <div>No custom models</div>
+          <div style="font-size: 0.8rem; margin-top: 10px;">Use "Add Model" button to create a new model</div>
+        </div>`;
+      return;
+    }
+    Object.keys(preparationData.customModels).forEach(mid => {
+      const model = preparationData.customModels[mid];
+      const item = document.createElement('div');
+      item.className = 'model-item';
+      item.innerHTML = `
+        <div class="model-info">
+          <div class="model-icon">${model.icon || '🐾'}</div>
+          <div>
+            <div>${escapeHtml(model.name || mid)}</div>
+            <div style="font-size: 0.8rem; color: var(--muted);">${escapeHtml(getTypeName(model.type))}</div>
+          </div>
+        </div>
+        <div class="model-actions">
+          <button class="btn" data-model="${mid}">✏️</button>
+          <button class="btn btn-danger" data-model="${mid}">🗑️</button>
+        </div>
+      `;
+      const editBtn = item.querySelector('.btn:not(.btn-danger)');
+      const delBtn = item.querySelector('.btn-danger');
+      editBtn.addEventListener('click', () => editModel(mid));
+      delBtn.addEventListener('click', () => deleteModel(mid));
+      modelsContainer.appendChild(item);
+    });
+  }
+
+  function getTypeName(type) {
+    const map = { mammals: 'Mammals', birds: 'Birds', reptiles: 'Reptiles', other: 'Other' };
+    return map[type] || type || '';
+  }
+
+  // -------------------------
+  // Model management
+  // -------------------------
+  function saveModel() {
+    const name = document.getElementById('modelName').value.trim();
+    const icon = document.getElementById('modelIcon').value.trim();
+    const type = document.getElementById('modelType').value;
+    const imageFile = document.getElementById('modelImage').files[0];
+
+    if (!name) { showNotification('Please enter animal name', 'error'); return; }
+    if (!imageFile && !editingModelId) { showNotification('Please select an animal image', 'error'); return; }
+
+    const modelId = editingModelId || 'custom_' + Date.now();
+
+    if (imageFile) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        saveModelData(modelId, name, icon, type, e.target.result);
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
+      const currentImage = preparationData.customModels[modelId]?.image;
+      saveModelData(modelId, name, icon, type, currentImage);
+    }
+  }
+
+  function saveModelData(modelId, name, icon, type, image) {
+    preparationData.customModels[modelId] = {
+      name: name,
+      icon: icon || '🐾',
+      type: type,
+      image: image,
+      parts: preparationData.customModels[modelId]?.parts || []
+    };
+    isDirty = true;
+    savePreparation();
+    modelModal.classList.remove('show');
+    resetModelForm();
+    renderAllAnimals();
+    renderModelsList();
+    if (editingModelId === modelId) {
+      currentAnimal = modelId;
+      updateAnimalSelection();
+      switchAnimal(modelId);
+    }
+    showNotification(editingModelId ? 'Model edited successfully' : 'Model added successfully', 'success');
+    editingModelId = null;
+  }
+
+  function editModel(modelId) {
+    const model = preparationData.customModels[modelId];
+    if (!model) return;
+    editingModelId = modelId;
+    document.getElementById('modelModalTitle').textContent = 'Edit Model';
+    document.getElementById('modelName').value = model.name;
+    document.getElementById('modelIcon').value = model.icon;
+    document.getElementById('modelType').value = model.type;
+    document.getElementById('modelImage').value = '';
+    modelModal.classList.add('show');
+  }
+
+  function deleteModel(modelId) {
+    if (!preparationData.customModels[modelId]) return;
+    if (!confirm(`Are you sure you want to delete "${preparationData.customModels[modelId].name}"?`)) return;
+    delete preparationData.customModels[modelId];
+    if (currentAnimal === modelId) {
+      currentAnimal = 'camel';
+      switchAnimal('camel');
+    }
+    isDirty = true;
+    savePreparation();
+    renderAllAnimals();
+    renderModelsList();
+    showNotification('Model deleted successfully', 'success');
+  }
+
+  function resetModelForm() {
+    document.getElementById('modelName').value = '';
+    document.getElementById('modelIcon').value = '';
+    document.getElementById('modelType').value = 'mammals';
+    document.getElementById('modelImage').value = '';
+  }
+
+  // -------------------------
+  // Switch animal
+  // -------------------------
+  function switchAnimal(animal) {
+    // custom model
+    if (preparationData.customModels && preparationData.customModels[animal]) {
+      const data = preparationData.customModels[animal];
+      anatomyImage.src = data.image;
+      anatomyImage.alt = `${data.name} Anatomy`;
+      currentAnimal = animal;
+      // if model has parts and no existing hotspots, adopt them
+      if (!preparationData.hotspots || preparationData.hotspots.length === 0) {
+        preparationData.hotspots = data.parts ? [...data.parts] : [];
       }
-      
+      isDirty = true;
       savePreparation();
       updateDisplay();
-      updateInfoPanel();
-      showNotification('Hotspot edited successfully', 'success');
+      showNotification(`Switched to ${data.name}`, 'success');
+      return;
     }
+    // default
+    const data = anatomyData[animal];
+    if (!data) return;
+    anatomyImage.src = data.image;
+    anatomyImage.alt = `${data.name} Anatomy`;
+    currentAnimal = animal;
+    // merge without duplicating ids
+    const existingIds = (preparationData.hotspots || []).map(p => p.id);
+    data.parts.forEach(part => {
+      if (!existingIds.includes(part.id)) preparationData.hotspots.push({ ...part });
+    });
+    isDirty = true;
+    savePreparation();
+    updateDisplay();
+    showNotification(`Switched to ${data.name}`, 'success');
+  }
 
-    // Delete part
-    function deletePart() {
-      if (!activePart) return;
-      
-      if (confirm(`Are you sure you want to delete hotspot "${activePart.name}"?`)) {
-        preparationData.hotspots = preparationData.hotspots.filter(p => p.id !== activePart.id);
-        savePreparation();
-        updateDisplay();
-        infoPanel.classList.remove('show');
-        activePart = null;
-        showNotification('Hotspot deleted successfully', 'success');
-      }
+  function updateAnimalSelection() {
+    document.querySelectorAll('.animal-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.animal === currentAnimal);
+    });
+    if (preparationData.customModels && preparationData.customModels[currentAnimal]) {
+      anatomyImage.src = preparationData.customModels[currentAnimal].image;
+    } else if (anatomyData[currentAnimal]) {
+      anatomyImage.src = anatomyData[currentAnimal].image;
     }
+  }
 
-    // Enable move mode
-    function toggleMoveMode() {
-      isMovingMode = !isMovingMode;
-      const moveBtn = document.getElementById('movePart');
-      
-      if (isMovingMode) {
-        moveBtn.innerHTML = '<span>✅</span> Finish Moving';
-        moveBtn.classList.add('btn-success');
-        showNotification('Move mode enabled - Drag hotspots to change positions', 'info');
-      } else {
-        moveBtn.innerHTML = '<span>↔️</span> Move Hotspot';
-        moveBtn.classList.remove('btn-success');
-        showNotification('Move mode disabled', 'info');
-      }
+  // -------------------------
+  // Utilities / UI
+  // -------------------------
+  function showNotification(message, type = 'info') {
+    // Replace console.log with a real UI notification if available
+    console.log(`${type.toUpperCase()}: ${message}`);
+  }
+
+  function escapeHtml(text) {
+    if (text == null) return '';
+    return String(text).replace(/[&<>"']/g, function (m) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+    });
+  }
+
+  // -------------------------
+  // Print guard (prevent printing without save)
+  // -------------------------
+  function beforePrint() {
+    if (!preparationData.hotspots || preparationData.hotspots.length === 0) {
+      alert('⚠ يجب إضافة نقطة واحدة على الأقل قبل الطباعة');
+      return;
     }
-     
-    // Toggle presentation mode
-    function togglePresentationMode() {
-      isPresentationMode = !isPresentationMode;
-      const presentationBtn = document.getElementById('presentationMode');
-      const controlBar = document.querySelector('.control-bar');
-
-      if (isPresentationMode) {
-        app.classList.add('presentation-mode');
-        presentationBtn.innerHTML = '<span>👁️</span> Exit Presentation';
-        presentationBtn.classList.add('btn-danger');
-        showNotification('تم تفعيل وضع العرض', 'success');
-
-        // إخفاء شريط التحكم
-        if (controlBar) controlBar.style.display = 'none';
-      } else {
-        app.classList.remove('presentation-mode');
-        presentationBtn.innerHTML = '<span>🎯</span> Presentation Mode';
-        presentationBtn.classList.remove('btn-danger');
-        showNotification('تم الخروج من وضع العرض', 'info');
-
-        // إظهار شريط التحكم
-        if (controlBar) controlBar.style.display = '';
-      }
+    if (!preparationData.lastSaved) {
+      alert('⚠ يجب حفظ العملية قبل الطباعة');
+      return;
     }
+    window.print();
+  }
 
-    // Mobile sidebar functions
-    function toggleMobileSidebar() {
-      sidebar.classList.toggle('open');
-      sidebarOverlay.classList.toggle('open');
-    }
-
-    function closeMobileSidebar() {
-      sidebar.classList.remove('open');
-      sidebarOverlay.classList.remove('open');
-    }
-
-    // Setup event listeners
-    function setupEventListeners() {
-      // Mobile menu toggle
-      mobileMenuToggle.addEventListener('click', toggleMobileSidebar);
-      sidebarOverlay.addEventListener('click', closeMobileSidebar);
-      
-      // Animal selection
-      document.addEventListener('click', (e) => {
-        if (e.target.closest('.animal-option') && !e.target.closest('.animal-actions')) {
-          const option = e.target.closest('.animal-option');
-          if (option.dataset.animal) {
-            document.querySelectorAll('.animal-option').forEach(opt => opt.classList.remove('active'));
-            option.classList.add('active');
-            currentAnimal = option.dataset.animal;
-            switchAnimal(currentAnimal);
-            
-            // Close mobile sidebar after selection
-            if (window.innerWidth < 768) {
-              closeMobileSidebar();
-            }
-          }
+  // -------------------------
+  // Setup event listeners
+  // -------------------------
+  function setupEventListeners() {
+    // Animal selection (delegated)
+    document.addEventListener('click', (e) => {
+      const opt = e.target.closest('.animal-option');
+      if (opt && !e.target.closest('.animal-actions')) {
+        if (opt.dataset.animal) {
+          document.querySelectorAll('.animal-option').forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          currentAnimal = opt.dataset.animal;
+          switchAnimal(currentAnimal);
         }
-      });
+      }
+    });
 
-      // Tabs
-      document.querySelectorAll('.animal-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          const category = tab.dataset.category;
-          document.querySelectorAll('.animal-tab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          
-          document.querySelectorAll('.animal-grid').forEach(grid => grid.style.display = 'none');
-          document.getElementById(`${category}-grid`).style.display = 'grid';
-          
-          if (category === 'models') {
-            renderModelsList();
-          } else {
-            renderAnimalsByCategory(category);
-          }
-        });
+    // Tabs
+    document.querySelectorAll('.animal-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const category = tab.dataset.category;
+        document.querySelectorAll('.animal-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.animal-grid').forEach(grid => grid.style.display = 'none');
+        const grid = document.getElementById(`${category}-grid`);
+        if (grid) grid.style.display = 'grid';
+        if (category === 'models') renderModelsList();
+        else renderAnimalsByCategory(category);
       });
+    });
 
-      // Search
-      document.getElementById('searchBox').addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
+    // Search
+    const searchBox = document.getElementById('searchBox');
+    if (searchBox) {
+      searchBox.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
         document.querySelectorAll('.part-item').forEach(item => {
-          const text = item.textContent.toLowerCase();
-          item.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+          item.style.display = item.textContent.toLowerCase().includes(term) ? 'flex' : 'none';
         });
       });
+    }
 
-      // Zoom controls
-      document.getElementById('zoomIn').addEventListener('click', () => {
-        currentScale += 0.1;
-        updateZoom();
-      });
+    // Zoom controls
+    const zi = document.getElementById('zoomIn');
+    const zo = document.getElementById('zoomOut');
+    const rz = document.getElementById('resetZoom');
+    if (zi) zi.addEventListener('click', () => { currentScale += 0.1; updateZoom(); });
+    if (zo) zo.addEventListener('click', () => { currentScale = Math.max(0.5, currentScale - 0.1); updateZoom(); });
+    if (rz) rz.addEventListener('click', () => { currentScale = 1; updateZoom(); });
 
-      document.getElementById('zoomOut').addEventListener('click', () => {
-        currentScale = Math.max(0.5, currentScale - 0.1);
-        updateZoom();
-      });
-
-      document.getElementById('resetZoom').addEventListener('click', () => {
-        currentScale = 1;
-        updateZoom();
-      });
-
-      // Add hotspot
-      document.getElementById('addHotspot').addEventListener('click', () => {
+    // Add hotspot button
+    const addHotspotBtn = document.getElementById('addHotspot');
+    if (addHotspotBtn) {
+      addHotspotBtn.addEventListener('click', () => {
         isAddingHotspot = true;
         showNotification('Click on the image to add a new hotspot', 'info');
       });
+    }
 
-      // Clear all
-      document.getElementById('clearAll').addEventListener('click', () => {
-        if (confirm('Are you sure you want to clear all hotspots?')) {
-          preparationData.hotspots = [];
-          savePreparation();
-          updateDisplay();
-          infoPanel.classList.remove('show');
-          showNotification('All hotspots cleared', 'success');
-        }
-      });
-
-      // Edit part
-      document.getElementById('editPart').addEventListener('click', editPart);
-
-      // Delete part
-      document.getElementById('deletePart').addEventListener('click', deletePart);
-
-      // Move part
-      document.getElementById('movePart').addEventListener('click', toggleMoveMode);
-
-      // Presentation mode
-      document.getElementById('presentationMode').addEventListener('click', togglePresentationMode);
-
-      // Exit presentation
-      document.getElementById('exitPresentation').addEventListener('click', togglePresentationMode);
-
-      // Export data
-      document.getElementById('exportData').addEventListener('click', exportPreparation);
-
-      // Import data
-      document.getElementById('importData').addEventListener('click', () => importFile.click());
-      importFile.addEventListener('change', handleFileImport);
-
-      // Add new model
-      addModelBtn.addEventListener('click', () => {
-        editingModelId = null;
-        document.getElementById('modelModalTitle').textContent = 'Add New Model';
-        resetModelForm();
-        modelModal.classList.add('show');
-      });
-
-      // Close model modal
-      document.getElementById('closeModelModal').addEventListener('click', () => {
-        modelModal.classList.remove('show');
-      });
-
-      document.getElementById('cancelModel').addEventListener('click', () => {
-        modelModal.classList.remove('show');
-      });
-
-      // Save model
-      document.getElementById('saveModel').addEventListener('click', saveModel);
-
-      // Click on image to add hotspot
-      viewer.addEventListener('click', (e) => {
-        if (!isAddingHotspot) return;
-        
-        const rect = viewer.getBoundingClientRect();
-        const imageRect = anatomyImage.getBoundingClientRect();
-        
-        // Calculate the offset from the image to the viewer
-        const offsetX = (rect.width - imageRect.width) / 2;
-        const offsetY = (rect.height - imageRect.height) / 2;
-        
-        // Calculate position relative to the image
-        const x = Math.max(0, Math.min(100, ((e.clientX - rect.left - offsetX) / imageRect.width) * 100));
-        const y = Math.max(0, Math.min(100, ((e.clientY - rect.top - offsetY) / imageRect.height) * 100));
-        
-        const name = prompt('Anatomical part name:');
-        if (!name) {
-          isAddingHotspot = false;
-          return;
-        }
-        
-        const description = prompt('Part description:') || '';
-        const system = prompt('System (e.g., Skeletal, Digestive):') || '';
-        const layer = prompt('Layer (e.g., Bones, Muscles):') || '';
-        
-        // Ask for image or video URL
-        const imageUrl = prompt('Part image or video URL (optional):', '');
-        
-        const newPart = {
-          id: 'part_' + Date.now(),
-          name,
-          description,
-          system,
-          layer,
-          x,
-          y
-        };
-        
-        // Add image if provided
-        if (imageUrl) {
-          newPart.image = imageUrl;
-        }
-        
-        preparationData.hotspots.push(newPart);
+    // Clear all
+    const clearAllBtn = document.getElementById('clearAll');
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', () => {
+        if (!confirm('Are you sure you want to clear all hotspots?')) return;
+        preparationData.hotspots = [];
+        isDirty = true;
         savePreparation();
-        updateDisplay();
-        isAddingHotspot = false;
-        showNotification('Hotspot added successfully', 'success');
-      });
-
-      // Close info panel when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!infoPanel.contains(e.target) && !e.target.classList.contains('hotspot')) {
-          infoPanel.classList.remove('show');
-          activePart = null;
-          updateHotspotActiveStates();
-          renderPartsList();
-        }
-      });
-
-      // Update hotspot positions when image loads or resizes
-      anatomyImage.addEventListener('load', updateAllHotspotPositions);
-      window.addEventListener('resize', updateAllHotspotPositions);
-    }
-
-    // Update zoom level
-    function updateZoom() {
-      anatomyImage.style.transform = `scale(${currentScale})`;
-      document.getElementById('resetZoom').textContent = `${Math.round(currentScale * 100)}%`;
-      
-      // Update hotspot positions after zoom
-      setTimeout(updateAllHotspotPositions, 50);
-    }
-
-    // Switch animal
-    function switchAnimal(animal) {
-      // Check if animal is custom
-      if (preparationData.customModels && preparationData.customModels[animal]) {
-        const data = preparationData.customModels[animal];
-        anatomyImage.src = data.image;
-        anatomyImage.alt = `${data.name} Anatomy`;
-        currentAnimal = animal;
-        
-        // Use saved hotspots for this animal or create empty list
-        if (!preparationData.hotspots || preparationData.hotspots.length === 0) {
-          preparationData.hotspots = data.parts ? [...data.parts] : [];
-        }
-        
-        savePreparation();
-        updateDisplay();
-        showNotification(`Switched to ${data.name}`, 'success');
-      } else {
-        // Default animal
-        const data = anatomyData[animal];
-        if (data) {
-          anatomyImage.src = data.image;
-          anatomyImage.alt = `${data.name} Anatomy`;
-          currentAnimal = animal;
-          
-          // Merge base data with current preparation
-          const existingIds = preparationData.hotspots.map(p => p.id);
-          data.parts.forEach(part => {
-            if (!existingIds.includes(part.id)) {
-              preparationData.hotspots.push({...part});
-            }
-          });
-          
-          savePreparation();
-          updateDisplay();
-          showNotification(`Switched to ${data.name}`, 'success');
-        }
-      }
-    }
-
-    // Update selected animal
-    function updateAnimalSelection() {
-      document.querySelectorAll('.animal-option').forEach(option => {
-        option.classList.toggle('active', option.dataset.animal === currentAnimal);
-      });
-      
-      // Update image based on animal type
-      if (preparationData.customModels && preparationData.customModels[currentAnimal]) {
-        anatomyImage.src = preparationData.customModels[currentAnimal].image;
-      } else if (anatomyData[currentAnimal]) {
-        anatomyImage.src = anatomyData[currentAnimal].image;
-      }
-    }
-
-    // Export preparation
-    function exportPreparation() {
-      const dataStr = JSON.stringify(preparationData, null, 2);
-      const dataBlob = new Blob([dataStr], { type: 'application/json' });
-      
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(dataBlob);
-      link.download = `${currentAnimal}_anatomy_preparation_${new Date().toISOString().split('T')[0]}.json`;
-      link.click();
-      
-      showNotification('Preparation exported successfully', 'success');
-    }
-
-    // Import file
-    function handleFileImport(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const importedData = JSON.parse(e.target.result);
-          preparationData = importedData;
-          currentAnimal = preparationData.animal;
-          savePreparation();
-          updateAnimalSelection();
-          updateDisplay();
-          renderAllAnimals();
-          showNotification('Preparation imported successfully', 'success');
-        } catch (error) {
-          showNotification('Error importing file', 'error');
-        }
-      };
-      reader.readAsText(file);
-    }
-
-    // Display all animals
-    function renderAllAnimals() {
-      const allGrid = document.getElementById('all-grid');
-      allGrid.innerHTML = '';
-      
-      // Add default animals
-      Object.keys(anatomyData).forEach(animalId => {
-        const animal = anatomyData[animalId];
-        createAnimalOption(allGrid, animalId, animal);
-      });
-      
-      // Add custom animals
-      if (preparationData.customModels) {
-        Object.keys(preparationData.customModels).forEach(modelId => {
-          const model = preparationData.customModels[modelId];
-          createAnimalOption(allGrid, modelId, model);
-        });
-      }
-    }
-
-    // Display animals by category
-    function renderAnimalsByCategory(category) {
-      const grid = document.getElementById(`${category}-grid`);
-      grid.innerHTML = '';
-      
-      // Add default animals from specified category
-      Object.keys(anatomyData).forEach(animalId => {
-        const animal = anatomyData[animalId];
-        if (animal.type === category) {
-          createAnimalOption(grid, animalId, animal);
-        }
-      });
-      
-      // Add custom animals from specified category
-      if (preparationData.customModels) {
-        Object.keys(preparationData.customModels).forEach(modelId => {
-          const model = preparationData.customModels[modelId];
-          if (model.type === category) {
-            createAnimalOption(grid, modelId, model);
-          }
-        });
-      }
-    }
-
-    // Create animal option element
-    function createAnimalOption(container, animalId, animal) {
-      const animalOption = document.createElement('div');
-      animalOption.className = `animal-option ${currentAnimal === animalId ? 'active' : ''}`;
-      animalOption.dataset.animal = animalId;
-      animalOption.innerHTML = `
-        <div class="animal-actions">
-          ${animalId.startsWith('custom_') ? `
-            <button class="edit" data-animal="${animalId}">✏️</button>
-            <button class="delete" data-animal="${animalId}">🗑️</button>
-          ` : ''}
-        </div>
-        <div class="animal-icon">${animal.icon}</div>
-        <div>${animal.name}</div>
-      `;
-      
-      // Add events for buttons if custom animal
-      if (animalId.startsWith('custom_')) {
-        const editBtn = animalOption.querySelector('.edit');
-        const deleteBtn = animalOption.querySelector('.delete');
-        
-        editBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          editModel(animalId);
-        });
-        
-        deleteBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          deleteModel(animalId);
-        });
-      }
-      
-      container.appendChild(animalOption);
-    }
-
-    // Display models list
-    function renderModelsList() {
-      const modelsContainer = document.getElementById('models-container');
-      modelsContainer.innerHTML = '';
-      
-      if (!preparationData.customModels || Object.keys(preparationData.customModels).length === 0) {
-        modelsContainer.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-icon">📁</div>
-            <div>No custom models</div>
-            <div style="font-size: 0.8rem; margin-top: 10px;">Use "Add Model" button to create a new model</div>
-          </div>
-        `;
-        return;
-      }
-      
-      Object.keys(preparationData.customModels).forEach(modelId => {
-        const model = preparationData.customModels[modelId];
-        const modelItem = document.createElement('div');
-        modelItem.className = 'model-item';
-        modelItem.innerHTML = `
-          <div class="model-info">
-            <div class="model-icon">${model.icon}</div>
-            <div>
-              <div>${model.name}</div>
-              <div style="font-size: 0.8rem; color: var(--muted);">${getTypeName(model.type)}</div>
-            </div>
-          </div>
-          <div class="model-actions">
-            <button class="btn" data-model="${modelId}">✏️</button>
-            <button class="btn btn-danger" data-model="${modelId}">🗑️</button>
-          </div>
-        `;
-        
-        const editBtn = modelItem.querySelector('.btn:not(.btn-danger)');
-        const deleteBtn = modelItem.querySelector('.btn-danger');
-        
-        editBtn.addEventListener('click', () => editModel(modelId));
-        deleteBtn.addEventListener('click', () => deleteModel(modelId));
-        
-        modelsContainer.appendChild(modelItem);
+        createHotspotsFromData();
+        infoPanel.classList.remove('show');
+        showNotification('All hotspots cleared', 'success');
       });
     }
 
-    // Get type name
-    function getTypeName(type) {
-      const typeNames = {
-        mammals: 'Mammals',
-        birds: 'Birds',
-        reptiles: 'Reptiles',
-        other: 'Other'
-      };
-      return typeNames[type] || type;
-    }
+    // Edit / Delete / Move / Presentation / Export / Import bindings
+    const editBtn = document.getElementById('editPart');
+    if (editBtn) editBtn.addEventListener('click', editPart);
+    const delBtn = document.getElementById('deletePart');
+    if (delBtn) delBtn.addEventListener('click', deletePart);
+    const moveBtn = document.getElementById('movePart');
+    if (moveBtn) moveBtn.addEventListener('click', toggleMoveMode);
+    const presentationBtn = document.getElementById('presentationMode');
+    if (presentationBtn) presentationBtn.addEventListener('click', togglePresentationMode);
+    const exitPresentation = document.getElementById('exitPresentation');
+    if (exitPresentation) exitPresentation.addEventListener('click', togglePresentationMode);
+    const exportBtn = document.getElementById('exportData');
+    if (exportBtn) exportBtn.addEventListener('click', exportPreparation);
+    const importBtn = document.getElementById('importData');
+    if (importBtn) importBtn.addEventListener('click', () => importFile.click());
+    if (importFile) importFile.addEventListener('change', handleFileImport);
 
-    // Save model
-    function saveModel() {
-      const name = document.getElementById('modelName').value.trim();
-      const icon = document.getElementById('modelIcon').value.trim();
-      const type = document.getElementById('modelType').value;
-      const imageFile = document.getElementById('modelImage').files[0];
-      
-      if (!name) {
-        showNotification('Please enter animal name', 'error');
-        return;
-      }
-      
-      if (!imageFile && !editingModelId) {
-        showNotification('Please select an animal image', 'error');
-        return;
-      }
-      
-      const modelId = editingModelId || 'custom_' + Date.now();
-      
-      if (imageFile) {
-        // Read image and convert to URL
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          saveModelData(modelId, name, icon, type, e.target.result);
-        };
-        reader.readAsDataURL(imageFile);
-      } else {
-        // Use current image when editing
-        const currentImage = preparationData.customModels[modelId].image;
-        saveModelData(modelId, name, icon, type, currentImage);
-      }
-    }
-
-    // Save model data
-    function saveModelData(modelId, name, icon, type, image) {
-      preparationData.customModels[modelId] = {
-        name: name,
-        icon: icon || '🐾',
-        type: type,
-        image: image,
-        parts: preparationData.customModels[modelId]?.parts || []
-      };
-      
-      // Save data
-      savePreparation();
-      
-      // Close modal and reset form
-      modelModal.classList.remove('show');
-      resetModelForm();
-      
-      // Update display
-      renderAllAnimals();
-      renderModelsList();
-      
-      // If editing current model, switch to it
-      if (editingModelId === modelId) {
-        currentAnimal = modelId;
-        updateAnimalSelection();
-        switchAnimal(modelId);
-      }
-      
-      showNotification(editingModelId ? 'Model edited successfully' : 'Model added successfully', 'success');
+    // add model
+    if (addModelBtn) addModelBtn.addEventListener('click', () => {
       editingModelId = null;
-    }
-
-    // Edit model
-    function editModel(modelId) {
-      const model = preparationData.customModels[modelId];
-      if (!model) return;
-      
-      editingModelId = modelId;
-      document.getElementById('modelModalTitle').textContent = 'Edit Model';
-      document.getElementById('modelName').value = model.name;
-      document.getElementById('modelIcon').value = model.icon;
-      document.getElementById('modelType').value = model.type;
-      document.getElementById('modelImage').value = '';
-      
+      document.getElementById('modelModalTitle').textContent = 'Add New Model';
+      resetModelForm();
       modelModal.classList.add('show');
-    }
+    });
+    const closeModelModal = document.getElementById('closeModelModal');
+    if (closeModelModal) closeModelModal.addEventListener('click', () => modelModal.classList.remove('show'));
+    const cancelModel = document.getElementById('cancelModel');
+    if (cancelModel) cancelModel.addEventListener('click', () => modelModal.classList.remove('show'));
+    const saveModelBtn = document.getElementById('saveModel');
+    if (saveModelBtn) saveModelBtn.addEventListener('click', saveModel);
 
-    // Delete model
-    function deleteModel(modelId) {
-      if (confirm(`Are you sure you want to delete "${preparationData.customModels[modelId].name}"?`)) {
-        // Delete model from data
-        delete preparationData.customModels[modelId];
-        
-        // If current model is deleted, switch to default animal
-        if (currentAnimal === modelId) {
-          currentAnimal = 'camel';
-          switchAnimal('camel');
+    // viewer click - either add hotspot or close info panel
+    viewer.addEventListener('click', (e) => {
+      // if adding hotspot and click inside image area -> add
+      if (isAddingHotspot) {
+        // ensure click over the image portion (within image rect)
+        const imgRect = anatomyImage.getBoundingClientRect();
+        if (e.clientX >= imgRect.left && e.clientX <= imgRect.right && e.clientY >= imgRect.top && e.clientY <= imgRect.bottom) {
+          addHotspotAtPosition(e.clientX, e.clientY);
+        } else {
+          showNotification('Click inside the anatomy image to add a hotspot', 'info');
         }
-        
-        // Save data
-        savePreparation();
-        
-        // Update display
-        renderAllAnimals();
-        renderModelsList();
-        
-        showNotification('Model deleted successfully', 'success');
+        isAddingHotspot = false;
+        return;
       }
-    }
+      // close info panel if clicking outside
+      if (!infoPanel.contains(e.target) && !e.target.classList.contains('hotspot')) {
+        infoPanel.classList.remove('show');
+        activePart = null;
+        updateHotspotActiveStates();
+        renderPartsList();
+      }
+    });
 
-    // Reset add model form
-    function resetModelForm() {
-      document.getElementById('modelName').value = '';
-      document.getElementById('modelIcon').value = '';
-      document.getElementById('modelType').value = 'mammals';
-      document.getElementById('modelImage').value = '';
-    }
+    // update positions on resize, and when image loads
+    window.addEventListener('resize', debounce(updateAllHotspotPositions, 120));
+    anatomyImage.addEventListener('load', () => {
+      // ensure image scaled state is considered
+      requestAnimationFrame(updateAllHotspotPositions);
+    });
 
-    // Show notifications
-    function showNotification(message, type) {
-      // Simple notification implementation - can be enhanced later
-      console.log(`${type}: ${message}`);
-    }
+    // keyboard: Esc closes info panel / cancel add
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        isAddingHotspot = false;
+        infoPanel.classList.remove('show');
+      }
+    });
 
-    // Toggle edit buttons visibility
-    function toggleEditButtons(show) {
-      const buttons = document.querySelectorAll('#editPart, #deletePart, #movePart');
-      buttons.forEach(button => {
-        button.style.display = show ? 'flex' : 'none';
-      });
-    }
+    // optional print button
+    const printBtn = document.getElementById('printBtn');
+    if (printBtn) printBtn.addEventListener('click', beforePrint);
+  }
 
-    // Initialize application when page loads
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
+  // -------------------------
+  // Zoom update
+  // -------------------------
+  function updateZoom() {
+    anatomyImage.style.transform = `scale(${currentScale})`;
+    const rz = document.getElementById('resetZoom');
+    if (rz) rz.textContent = `${Math.round(currentScale * 100)}%`;
+    // re-calc positions
+    requestAnimationFrame(updateAllHotspotPositions);
+  }
+
+  // -------------------------
+  // Small helpers
+  // -------------------------
+  function debounce(fn, wait) {
+    let t = null;
+    return function (...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
+  // -------------------------
+  // Init
+  // -------------------------
+function init() {
+    loadSavedPreparation();
+    setupEventListeners();
+
+    const img = document.getElementById("animalImage");
+
+    // مهم جداً — لن يتم رسم النقاط قبل أن يتم حساب حجم الصورة الحقيقي
+    img.onload = () => {
+        renderAllAnimals();
+        console.log("Image fully loaded — points positioned correctly");
+    };
+
+       // عند تغيير حجم النافذة يعيد رسم النقاط
+    window.addEventListener("resize", renderAllAnimals);
+    
+    // احتياط إضافي عند تغيير حجم الشاشة
+    window.addEventListener("resize", () => {
+        renderAllAnimals();
+        console.log("Window resized — points recalculated");
+    });
+
+    updateDisplay();
+    updateInfoPanel();
+}
+
+
+  // expose a few functions globally if needed (optional)
+  window.anatomyApp = {
+    init,
+    savePreparation,
+    exportPreparation,
+    switchAnimal,
+    renderAllAnimals,
+    updateAllHotspotPositions
+  };
+
+  // auto init on DOM ready
+  document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+
 </body>
 </html>
