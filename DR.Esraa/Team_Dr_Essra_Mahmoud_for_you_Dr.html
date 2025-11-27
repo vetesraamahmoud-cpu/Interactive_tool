@@ -1011,29 +1011,34 @@
       return '';
     }
 
-    // Initialize application
    // Initialize application
 function init() {
-  // أولاً اقرأ قائمة الملفات
-  fetch('list.json')
-    .then(res => res.json())
-    .then(files => {
-      files.forEach(file => {
-        if (file.endsWith('.json')) {
-          fetch(file)
-            .then(r => r.json())
-            .then(data => {
-              // دمج البيانات في anatomyData
-              Object.assign(anatomyData, data);
-              renderAllAnimals();
-              updateDisplay();
-              updateAllHotspotPositions();
-            });
-        }
-      });
+  // أول حاجة: اقرأ ملف الجسون
+  fetch('animals.json')
+    .then(response => response.json())
+    .then(data => {
+      anatomyData = data;   // خزّن البيانات في المتغير الأساسي
+      
+      // بعد تحميل البيانات، كمل باقي خطوات التهيئة
+      loadSavedPreparation();
+      setupEventListeners();
+      renderAllAnimals();
+      updateDisplay();
+      updateAllHotspotPositions();
+
+      anatomyImage.addEventListener('load', updateAllHotspotPositions);
     })
-    .catch(err => console.error('Error loading JSON files:', err));
+    .catch(error => {
+      console.error('Error loading JSON file:', error);
+      // fallback لو الملف مش موجود
+      loadSavedPreparation();
+      setupEventListeners();
+      renderAllAnimals();
+      updateDisplay();
+    });
 }
+
+    
 
 
 
@@ -1963,4 +1968,5 @@ function init() {
 </body>
 
 </html>
+
 
