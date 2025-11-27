@@ -936,8 +936,23 @@
   <input type="file" id="importFile" accept=".json" style="display: none">
 
   <script>
+
+    // Initialize application
+function init() {
+  loadSavedPreparation();
+  setupEventListeners();
+  renderAllAnimals();
+  updateDisplay();
+
+  // ✅ إصلاح: تحديث أماكن النقاط بعد أول تحميل
+  updateAllHotspotPositions();
+
+  // ✅ إصلاح: لما الصورة تخلص تحميل
+  anatomyImage.addEventListener('load', updateAllHotspotPositions);
+}
+
     // Anatomy data for different animals
-    let anatomyData = {};
+    const anatomyData = {};
 
 
 
@@ -1011,36 +1026,7 @@
       return '';
     }
 
-   // Initialize application
-function init() {
-  // أول حاجة: اقرأ ملف الجسون
-  fetch('animals.json')
-    .then(response => response.json())
-    .then(data => {
-      anatomyData = data;   // خزّن البيانات في المتغير الأساسي
-      
-      // بعد تحميل البيانات، كمل باقي خطوات التهيئة
-      loadSavedPreparation();
-      setupEventListeners();
-      renderAllAnimals();
-      updateDisplay();
-      updateAllHotspotPositions();
-
-      anatomyImage.addEventListener('load', updateAllHotspotPositions);
-    })
-    .catch(error => {
-      console.error('Error loading JSON file:', error);
-      // fallback لو الملف مش موجود
-      loadSavedPreparation();
-      setupEventListeners();
-      renderAllAnimals();
-      updateDisplay();
-    });
-}
-
     
-
-
 
     // Load saved preparation
     function loadSavedPreparation() {
@@ -1966,8 +1952,4 @@ function init() {
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
-
 </html>
-
-
-
