@@ -1916,27 +1916,60 @@ function togglePresentationMode() {
 // -------------------------
 async function loadDataJsonAutomatically() {
   try {
+    // Check localStorage first for saved data
+    const savedData = localStorage.getItem('animalAnatomyPreparation');
+    
+    if (savedData) {
+      try {
+        const parsedData = JSON.parse(savedData);
+        preparationData = { ...preparationData, ...parsedData };
+        currentAnimal = preparationData.animal || currentAnimal;
+        
+        // Apply updates to display
+        updateAnimalSelection();
+        createHotspotsFromData();
+        renderAllAnimals();
+        renderPartsList();
+        updateDisplay();
+        
+        showNotification('Data loaded from localStorage', 'success');
+        return; // Successfully loaded from localStorage, exit early
+      } catch (err) {
+        console.warn("localStorage parse error, trying data.json:", err);
+      }
+    }
+
+    // If localStorage doesn't exist or is corrupted, try to fetch data.json
     const response = await fetch('data.json');
     if (!response.ok) throw new Error('Failed to load data.json');
 
     const data = await response.json();
 
-    // دمج البيانات مع بيانات المشروع
+    // Merge data with preparation data
     preparationData = { ...preparationData, ...data };
 
-    // تحديث الحيوان الحالي إن وجد
+    // Update current animal if available
     currentAnimal = preparationData.animal || currentAnimal;
 
-    // تطبيق التحديثات
+    // Apply updates to page display
     updateAnimalSelection();
     createHotspotsFromData();
     renderAllAnimals();
+    renderPartsList();
+    updateDisplay();
+    updateInfoPanel();
 
-    showNotification('data.json loaded automatically', 'success');
+    // Save to localStorage for future use
+    savePreparation();
+
+    showNotification('data.json loaded and cached successfully', 'success');
 
   } catch (error) {
     console.error("Auto load error:", error);
-    showNotification('Failed to load data.json', 'error');
+    showNotification('Failed to load data - using defaults', 'info');
+    
+    // Load default animal even if data.json fails
+    loadDefaultAnimal();
   }
 }
 
@@ -1954,14 +1987,14 @@ async function init() {
 
     setupEventListeners();
 
-    const img = document.getElementById("animalImage");
+    const img = document.getElementById("anatomyImage");
 
-    img.onload = () => {
-        renderAllAnimals();
-        console.log("Image fully loaded — points positioned correctly");
-    };
-
-    window.addEventListener("resize", renderAllAnimals);
+    if (img) {
+        img.onload = () => {
+            renderAllAnimals();
+            console.log("Image fully loaded — points positioned correctly");
+        };
+    }
 
     window.addEventListener("resize", () => {
         renderAllAnimals();
