@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5" />
   <title>Interactive Animal Anatomy Tool</title>
   <style>
     :root {
@@ -21,6 +21,23 @@
       --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    /* Light Mode Variables */
+    :root.light-mode {
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: rgba(37, 99, 235, 0.1);
+      --muted: #6b7280;
+      --text: #1f2937;
+      --success: #059669;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --glass: rgba(0,0,0,0.03);
+      --border: rgba(0,0,0,0.1);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
     
     * {
       margin: 0;
@@ -31,9 +48,145 @@
     html, body {
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(135deg, var(--bg) 0%, var(--card) 100%);
       color: var(--text);
       direction: ltr;
+    }
+    
+    .app {
+      display: flex;
+      height: 100vh;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    /* ==================== RESPONSIVE DESIGN ==================== */
+    @media (max-width: 1024px) {
+      .app {
+        flex-direction: column;
+        padding: 8px;
+        gap: 8px;
+      }
+
+      .sidebar {
+        max-height: 35vh;
+        overflow-y: auto;
+      }
+
+      .main-area {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .app {
+        padding: 5px;
+        gap: 5px;
+      }
+
+      .sidebar {
+        max-height: 30vh;
+        width: 100% !important;
+      }
+
+      .animal-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .control-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+      }
+
+      .control-group {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+
+      .zoom-controls {
+        width: 100%;
+      }
+
+      .zoom-btn {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .app {
+        padding: 4px;
+        gap: 4px;
+      }
+
+      .sidebar-header {
+        padding: 12px;
+      }
+
+      .sidebar-header h1 {
+        font-size: 1.1rem;
+      }
+
+      .subtitle {
+        font-size: 0.8rem;
+      }
+
+      .animal-selector {
+        padding: 10px;
+      }
+
+      .animal-tabs {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .animal-tab {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+      }
+
+      .part-item {
+        padding: 8px;
+      }
+
+      .part-name {
+        font-size: 0.9rem;
+      }
+
+      .part-desc {
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        gap: 4px;
+      }
+
+      .btn span {
+        font-size: 0.9rem;
+      }
+
+      .info-panel {
+        max-width: 90vw;
+        padding: 15px;
+      }
+
+      .control-bar {
+        padding: 8px 10px;
+      }
+
+      .presentation-mode .control-bar {
+        bottom: 0;
+        padding: 8px;
+      }
     }
     
     .app {
@@ -53,6 +206,22 @@
       flex-direction: column;
       transition: var(--transition);
       box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        max-width: 100%;
+        max-height: 35vh;
+        border-radius: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        max-height: 32vh;
+        border-radius: 8px;
+      }
     }
     
     .sidebar-header {
@@ -86,6 +255,7 @@
       border-radius: 8px;
       padding: 4px;
       margin-bottom: 15px;
+      gap: 2px;
     }
     
     .animal-tab {
@@ -96,6 +266,37 @@
       border-radius: 6px;
       transition: var(--transition);
       font-size: 0.9rem;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 768px) {
+      .animal-tabs {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 3px;
+      }
+
+      .animal-tab {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+        flex: 1 1 calc(50% - 2px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .animal-tabs {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .animal-tab {
+        padding: 6px 6px;
+        font-size: 0.75rem;
+        flex: 1 1 auto;
+      }
     }
     
     .animal-tab:hover {
@@ -181,7 +382,23 @@
     .parts-list {
       flex: 1;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 15px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (max-width: 768px) {
+      .parts-list {
+        padding: 10px;
+        max-height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .parts-list {
+        padding: 8px;
+        max-height: 150px;
+      }
     }
     
     .part-item {
@@ -246,6 +463,8 @@
       position: relative;
       background: #000;
       overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
     }
     
     .anatomy-image {
@@ -253,9 +472,17 @@
       height: 100%;
       object-fit: contain;
       transition: transform 0.3s ease;
+      pointer-events: auto;
+      -webkit-touch-callout: none;
+    }
+
+    @media (max-width: 768px) {
+      .anatomy-image {
+        user-select: none;
+      }
     }
     
-    /* Interactive Hotspots - Updated to be fixed */
+    /* Interactive Hotspots - Fully Responsive */
     .hotspot {
       position: absolute;
       width: 32px;
@@ -274,6 +501,9 @@
       transition: var(--transition);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       transform-origin: center;
+      min-width: 32px;
+      min-height: 32px;
+      touch-action: none;
     }
     
     .hotspot:hover {
@@ -291,6 +521,92 @@
       z-index: 100;
       transform: scale(1.3);
     }
+
+    /* Tablet: Slightly smaller hotspots */
+    @media (max-width: 1024px) {
+      .hotspot {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+        border-width: 1.5px;
+      }
+
+      .hotspot:hover {
+        transform: scale(1.15);
+      }
+
+      .hotspot.dragging {
+        transform: scale(1.25);
+      }
+    }
+
+    /* Mobile Landscape & Small Tablets */
+    @media (max-width: 768px) {
+      .hotspot {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        border-width: 1.5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .hotspot:hover {
+        transform: scale(1.15);
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+      }
+
+      .hotspot.dragging {
+        transform: scale(1.2);
+        z-index: 100;
+      }
+
+      .hotspot.active {
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+      }
+    }
+
+    /* Mobile Portrait */
+    @media (max-width: 480px) {
+      .hotspot {
+        width: 20px;
+        height: 20px;
+        font-size: 0.65rem;
+        border-width: 1px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
+
+      .hotspot:hover {
+        transform: scale(1.2);
+        box-shadow: 0 3px 8px rgba(59, 130, 246, 0.3);
+      }
+
+      .hotspot.dragging {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+
+      .hotspot.active {
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+      }
+    }
+
+    /* Extra Small Devices */
+    @media (max-width: 360px) {
+      .hotspot {
+        width: 18px;
+        height: 18px;
+        font-size: 0.6rem;
+        border-width: 1px;
+      }
+
+      .hotspot:hover {
+        transform: scale(1.15);
+      }
+
+      .hotspot.dragging {
+        transform: scale(1.2);
+      }
+    }
     
     @keyframes pulse {
       0% { 
@@ -303,6 +619,21 @@
         box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); 
       }
     }
+
+    /* Pulse animation responsive */
+    @media (max-width: 768px) {
+      @keyframes pulse {
+        0% { 
+          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3); 
+        }
+        70% { 
+          box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); 
+        }
+        100% { 
+          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); 
+        }
+      }
+    }
     
     /* Control Bar */
     .control-bar {
@@ -313,6 +644,24 @@
       justify-content: space-between;
       align-items: center;
       transition: var(--transition);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .control-bar {
+        padding: 10px 12px;
+        gap: 6px;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .control-bar {
+        padding: 8px 10px;
+        gap: 5px;
+        flex-direction: column;
+      }
     }
     
     .presentation-mode .control-bar {
@@ -332,6 +681,24 @@
       display: flex;
       gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .control-group {
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .control-group {
+        gap: 5px;
+        width: 100%;
+        flex-direction: column;
+      }
     }
     
     .btn {
@@ -344,8 +711,29 @@
       transition: var(--transition);
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       font-size: 0.9rem;
+      white-space: nowrap;
+      min-height: 36px;
+      touch-action: manipulation;
+    }
+
+    @media (max-width: 768px) {
+      .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        min-height: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        width: 100%;
+        min-height: 40px;
+      }
     }
     
     .btn:hover {
@@ -400,6 +788,19 @@
       display: flex;
       gap: 5px;
     }
+
+    @media (max-width: 768px) {
+      .zoom-controls {
+        gap: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .zoom-controls {
+        width: 100%;
+        gap: 4px;
+      }
+    }
     
     .zoom-btn {
       width: 36px;
@@ -412,6 +813,25 @@
       border-radius: 6px;
       cursor: pointer;
       transition: var(--transition);
+      font-size: 0.9rem;
+      touch-action: manipulation;
+    }
+
+    @media (max-width: 768px) {
+      .zoom-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .zoom-btn {
+        flex: 1;
+        width: auto;
+        height: 36px;
+        font-size: 0.75rem;
+      }
     }
     
     .zoom-btn:hover {
@@ -420,10 +840,10 @@
       transform: scale(1.1);
     }
     
-    /* Info Panel - Updated to be fixed and more transparent */
+    /* Info Panel - Fully Responsive */
     .info-panel {
       position: fixed;
-      background: rgba(30, 41, 59, 0.85);
+      background: rgba(30, 41, 59, 0.95);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 20px;
@@ -435,6 +855,25 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 768px) {
+      .info-panel {
+        max-width: 85vw;
+        max-height: 80vh;
+        padding: 15px;
+        border-radius: 12px;
+        overflow-y: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .info-panel {
+        max-width: 90vw;
+        max-height: 75vh;
+        padding: 12px;
+        border-radius: 10px;
+      }
     }
     
     .info-panel.show {
@@ -751,9 +1190,66 @@
     display: flex;
     flex-direction: column;
     }
+
+    /* ==================== THEME TOGGLE BUTTON ==================== */
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 200;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .presentation-mode .theme-toggle {
+      top: 20px;
+      right: 20px;
+      z-index: 101;
+    }
+
+    /* Mobile theme toggle */
+    @media (max-width: 768px) {
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        top: 10px;
+        right: 10px;
+      }
+    }
+
+    /* Smooth color transitions */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Prevent transition flash on init */
+    html:not(.theme-initialized) * {
+      transition: none !important;
+    }
   </style>
 </head>
 <body>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
+
   <div class="app">
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -936,6 +1432,72 @@
   <input type="file" id="importFile" accept=".json" style="display: none">
 
 <script>
+/* ============================
+   Theme Management System
+   ============================ */
+(function() {
+  // Initialize theme
+  function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme === 'auto' ? (prefersDark ? 'dark' : 'light') : savedTheme;
+    
+    applyTheme(theme);
+    document.documentElement.classList.add('theme-initialized');
+  }
+
+  function applyTheme(theme) {
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (theme === 'light') {
+      html.classList.add('light-mode');
+      if (themeToggle) themeToggle.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.classList.remove('light-mode');
+      if (themeToggle) themeToggle.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.classList.contains('light-mode');
+    applyTheme(isLight ? 'dark' : 'light');
+  }
+
+  // Setup theme toggle button
+  function setupThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', toggleTheme);
+      themeToggle.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') toggleTheme();
+      });
+    }
+  }
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'auto') {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+
+  // Initialize when DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTheme();
+      setupThemeToggle();
+    });
+  } else {
+    initializeTheme();
+    setupThemeToggle();
+  }
+})();
+
 /* ============================
    Animal Anatomy - Revised
    ============================ */
