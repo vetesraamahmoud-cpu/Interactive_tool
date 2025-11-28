@@ -1908,25 +1908,61 @@ function togglePresentationMode() {
     };
   }
 
+
+
+
   // -------------------------
-  // Init
-  // -------------------------
-function init() {
+// Load data.json automatically
+// -------------------------
+async function loadDataJsonAutomatically() {
+  try {
+    const response = await fetch('data.json');
+    if (!response.ok) throw new Error('Failed to load data.json');
+
+    const data = await response.json();
+
+    // دمج البيانات مع بيانات المشروع
+    preparationData = { ...preparationData, ...data };
+
+    // تحديث الحيوان الحالي إن وجد
+    currentAnimal = preparationData.animal || currentAnimal;
+
+    // تطبيق التحديثات
+    updateAnimalSelection();
+    createHotspotsFromData();
+    renderAllAnimals();
+
+    showNotification('data.json loaded automatically', 'success');
+
+  } catch (error) {
+    console.error("Auto load error:", error);
+    showNotification('Failed to load data.json', 'error');
+  }
+}
+
+
+// -------------------------
+// Init
+// -------------------------
+async function init() {
+
+    // تحميل data.json تلقائي قبل أي شيء
+    await loadDataJsonAutomatically();
+
+    // تحميل المحفوظات بعد تحميل data.json
     loadSavedPreparation();
+
     setupEventListeners();
 
     const img = document.getElementById("animalImage");
 
-    // مهم جداً — لن يتم رسم النقاط قبل أن يتم حساب حجم الصورة الحقيقي
     img.onload = () => {
         renderAllAnimals();
         console.log("Image fully loaded — points positioned correctly");
     };
 
-       // عند تغيير حجم النافذة يعيد رسم النقاط
     window.addEventListener("resize", renderAllAnimals);
-    
-    // احتياط إضافي عند تغيير حجم الشاشة
+
     window.addEventListener("resize", () => {
         renderAllAnimals();
         console.log("Window resized — points recalculated");
@@ -1949,6 +1985,7 @@ function init() {
 
   // auto init on DOM ready
   document.addEventListener('DOMContentLoaded', init);
+  
 })();
 </script>
 
