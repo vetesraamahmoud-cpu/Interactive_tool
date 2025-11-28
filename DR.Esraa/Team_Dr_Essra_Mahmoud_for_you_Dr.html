@@ -1917,7 +1917,7 @@ function togglePresentationMode() {
 async function loadDataJsonAutomatically() {
   try {
     // Check localStorage first for saved data
-    const savedData = localStorage.getItem('animalAnatomyPreparation');
+    const savedData = localStorage.getItem('animalAnatomyData');
     
     if (savedData) {
       try {
@@ -1935,13 +1935,14 @@ async function loadDataJsonAutomatically() {
         showNotification('Data loaded from localStorage', 'success');
         return; // Successfully loaded from localStorage, exit early
       } catch (err) {
-        console.warn("localStorage parse error, trying data.json:", err);
+        console.warn("localStorage parse error, trying remote data.json:", err);
       }
     }
 
-    // If localStorage doesn't exist or is corrupted, try to fetch data.json
-    const response = await fetch('data.json');
-    if (!response.ok) throw new Error('Failed to load data.json');
+    // If localStorage doesn't exist or is corrupted, fetch from GitHub
+    const githubUrl = 'https://vetesraamahmoud-cpu.github.io/Interactive_tool/DR.Esraa/data.json';
+    const response = await fetch(githubUrl);
+    if (!response.ok) throw new Error('Failed to load data.json from GitHub');
 
     const data = await response.json();
 
@@ -1960,9 +1961,10 @@ async function loadDataJsonAutomatically() {
     updateInfoPanel();
 
     // Save to localStorage for future use
+    localStorage.setItem('animalAnatomyData', JSON.stringify(data));
     savePreparation();
 
-    showNotification('data.json loaded and cached successfully', 'success');
+    showNotification('data.json loaded from GitHub and cached successfully', 'success');
 
   } catch (error) {
     console.error("Auto load error:", error);
